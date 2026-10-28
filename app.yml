@@ -1,0 +1,137 @@
+config:
+  hyperparams:
+  - default: 'false'
+    description: Apply z-score normalization to expression values before analysis.
+    maxValue: null
+    minValue: '0'
+    name: zscoring
+    options: []
+    pattern: null
+    type: BOOLEAN
+  - default: '0.01'
+    description: Bonferroni-corrected significance level (alpha).
+    maxValue: null
+    minValue: '0'
+    name: bonferroni_alpha
+    options: []
+    pattern: null
+    type: FLOAT
+  - default: '0.2'
+    description: R² threshold for filtering; set to null to disable.
+    maxValue: null
+    minValue: null
+    name: r2_threshold
+    options: []
+    pattern: null
+    type: FLOAT
+  - default: 'false'
+    description: Perform D’Agostino-Pearson normality test on residuals.
+    maxValue: null
+    minValue: null
+    name: normaltest
+    options: []
+    pattern: null
+    type: BOOLEAN
+  - default: '0.001'
+    description: Alpha level for the normality test.
+    maxValue: null
+    minValue: null
+    name: normaltest_alpha
+    options: []
+    pattern: null
+    type: FLOAT
+  - default: 'false'
+    description: Enforce directionality condition when assessing dysregulation.
+    maxValue: null
+    minValue: null
+    name: direction_condition
+    options: []
+    pattern: null
+    type: BOOLEAN
+  - description: List of continuous covariates. They should match the name of their
+      columns in the meta Dataframe, separated by commas.
+    default: birth_days_to
+    maxValue: null
+    minValue: null
+    name: con_cov
+    options: []
+    pattern: null
+    type: STRING
+  - description: List of categorical variable names. They should match the name of
+      their columns in the meta Dataframe, separated by commas.
+    default: race,gender
+    maxValue: null
+    minValue: null
+    name: cat_cov
+    options: []
+    pattern: null
+    type: STRING
+  - description: Column name for the condition in the meta DataFrame.
+    default: sample_type
+    maxValue: null
+    minValue: null
+    name: con_col
+    options: []
+    pattern: null
+    type: STRING
+  input:
+  - description: Gene Regulatory Network (GRN) with two columns in the following order
+      ['TF', 'target'].
+    maxValue: null
+    minValue: null
+    name: grn
+    required: true
+    shape: null
+    hasHeader: true
+    type: CSV
+  - description: Gene expression matrix in the format patients as rows (first column
+      - patients/samples ids), and genes as columns.
+    maxValue: null
+    minValue: null
+    name: meta
+    required: true
+    shape: null
+    type: CSV
+    hasHeader: true
+  - description: Gene expression matrix in the format - patients as rows (first column
+      - patients/samples ids), and genes as columns.
+    maxValue: null
+    minValue: null
+    name: expr
+    required: true
+    shape: null
+    hasHeader: true
+    type: CSV
+  output:
+  - description: Distribution of non-zero values (representing interaction strengths)
+    maxValue: null
+    minValue: null
+    name: adjacency_heatmap
+    shape: null
+    type: IMAGE
+  - description: Heatmap of results matrix (sample of top interactions)
+    maxValue: null
+    minValue: null
+    name: pvalue_distribution
+    shape: null
+    type: IMAGE
+  - description: Top 20 Strongest Regulatory Interactions
+    maxValue: null
+    minValue: null
+    name: top_interactions
+    shape: null
+    type: IMAGE
+  - description: Results of the analysis in CSV format
+    maxValue: null
+    minValue: null
+    name: results
+    shape: null
+    type: CSV
+info:
+  name: tool-dysregnet
+  slug: tool-dysregnet
+  type: SELF_LEARNED
+  sourceUrl: https://github.com/FedLearnNet/tool-dysregnet
+  shortDescription: Infers sample-specific dysregulated networks with DysRegNet and
+    exports network results and plots.
+  longDescription: null
