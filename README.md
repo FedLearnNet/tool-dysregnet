@@ -1,4 +1,4 @@
-# tool-dysregnet
+# dysregnet
 
 Infers sample-specific dysregulated networks with DysRegNet and exports network results and plots.
 

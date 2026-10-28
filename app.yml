@@ -128,8 +128,8 @@ config:
     shape: null
     type: CSV
 info:
-  name: tool-dysregnet
-  slug: tool-dysregnet
+  name: dysregnet
+  slug: dysregnet
   type: SELF_LEARNED
   sourceUrl: https://github.com/FedLearnNet/tool-dysregnet
   shortDescription: Infers sample-specific dysregulated networks with DysRegNet and
